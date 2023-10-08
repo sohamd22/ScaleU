@@ -67,6 +67,25 @@ async def generate_quiz():
     quizContent = quizOutput["choices"][0]["message"]["content"]
     return json.loads(quizContent)
 
+# @app.get("/generate-roadmap")
+# async def generate_roadmap():
+#     roadMapOutput = openai.ChatCompletion.create(
+#         model="gpt-3.5-turbo",
+#         messages=[
+#             {
+#                 'role': "system",
+#                 "content": '''You are a roadmap generator. Your role is to output an entire roadmap (including prerequisites, current topic, future topics) to learn about the given data in JSON format. The format should be like {"node":[{"title": <title>, "info": [<info-point>, <info-point>...],"resources":[<resource>,<resource>...], "node": [...]}, {"title": <title>, "info": [<info-point>, <info-point>...],"resources":[<resource>,<resource>...]}]...}. Do not stay constrained to the data, you may expand and use outside legitimate sources and data similar to the current data. The given data is'''
+#             },
+#             {
+#                 "role": "user",
+#                 "content": textbookData
+#             }
+#         ]
+#     )
+
+#     roadMapContent = roadMapOutput["choices"][0]["message"]["content"]
+#     return json.loads(roadMapContent)
+
 if __name__ == "__main__":
     import uvicorn
 
