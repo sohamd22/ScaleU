@@ -1,5 +1,5 @@
 import os
-import csv
+import json
 from fastapi import FastAPI
 from dotenv import load_dotenv
 import openai
@@ -46,7 +46,7 @@ async def generate_mindmap():
     )
 
     mindMapContent = mindMapOutput["choices"][0]["message"]["content"]
-    return {"mind_map": mindMapContent}
+    return json.loads(mindMapContent)
 
 @app.get("/generate-quiz")
 async def generate_quiz():
@@ -65,7 +65,7 @@ async def generate_quiz():
     )
 
     quizContent = quizOutput["choices"][0]["message"]["content"]
-    return {"quiz": quizContent}
+    return json.loads(quizContent)
 
 if __name__ == "__main__":
     import uvicorn
